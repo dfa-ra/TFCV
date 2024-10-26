@@ -18,7 +18,7 @@ public class Complex {
     }
 
     public Complex div(Complex b) {
-        double n = b.x * b.x + b.y + b.y;double v;
+        double n = b.x * b.x + b.y * b.y;
         Complex mulled = this.mul(b.conjugate());
         return new Complex(mulled.x / n, mulled.y / n);
     }
@@ -29,6 +29,10 @@ public class Complex {
 
     public Complex conjugate() {
         return new Complex(this.x, -this.y);
+    }
+
+    public Complex neg() {
+        return new Complex(-this.x, -this.y);
     }
 
     public static Complex valueOf(int x) {
