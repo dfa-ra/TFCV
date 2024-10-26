@@ -17,6 +17,14 @@ public class Complex {
         return new Complex(this.x * b.x - this.y * b.y, this.x * b.y + this.y * b.x);
     }
 
+    public Complex pow(int n) {
+        Complex res = new Complex(this.x, this.y);
+        for (int i = 1; i < n; ++i) {
+            res = res.mul(this);
+        }
+        return res;
+    }
+
     public Complex div(Complex b) {
         double n = b.x * b.x + b.y * b.y;
         Complex mulled = this.mul(b.conjugate());
