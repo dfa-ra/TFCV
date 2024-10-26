@@ -30,8 +30,7 @@ public class Newton implements IFractal{
         for (int i = 0; i < pow; ++i) {
             double phi = 2 * Math.PI * i / pow;
             roots.add(new Complex(Math.cos(phi), Math.sin(phi)));
-
-            colors.add(new Color((int) ((1 + Math.cos(phi))/ 2 * 255), (int) ((1 + Math.sin(phi)) / 2 * 128), (int) ((1 + Math.sin(phi)) / 2 * 255)));
+            colors.add(Color.getHSBColor((float) phi, 0.7F, 0.8F));
         }
     }
 

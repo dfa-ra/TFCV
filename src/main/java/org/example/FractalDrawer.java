@@ -15,7 +15,7 @@ public class FractalDrawer extends ImageIcon{
         fractals = new HashMap<>(){{
             put(Fractal.MANDELBROT, new Mandelbrot(width, height));
             put(Fractal.JULIA, new Julia(width, height));
-            put(Fractal.NEWTON, new Newton(width, height, 10, 3));
+            put(Fractal.NEWTON, new Newton(width, height, 2, 5));
         }};
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         setImage(image);
