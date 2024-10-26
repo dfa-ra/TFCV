@@ -4,7 +4,7 @@ import org.example.complex.Complex;
 
 import java.awt.*;
 
-public class Mandelbrot implements IFractal{
+public class Mandelbrot implements IFractal {
 
     private final int[][] frame;
 
@@ -38,9 +38,9 @@ public class Mandelbrot implements IFractal{
         Complex z = new Complex(0, 0);
 
         int n = 0;
-        while (n < 255 && Complex.mod(z) < 2)
+        while (n < 255 && z.mod() < 2)
         {
-            z = Complex.sum(c, Complex.mul(z, z));
+            z = c.sum(z.mul(z));
             n++;
         }
 

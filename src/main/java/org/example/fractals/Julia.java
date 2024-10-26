@@ -34,9 +34,9 @@ public class Julia implements IFractal{
     private int fJulia (Complex z, Complex c)
     {
         int n = 0;
-        while (n < 255 && Complex.mod(z) < 2)
+        while (n < 255 && z.mod() < 2)
         {
-            z = Complex.sum(c, Complex.mul(z, z));
+            z = c.sum(z.mul(z));
             n++;
         }
 
