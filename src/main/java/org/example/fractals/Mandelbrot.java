@@ -20,15 +20,14 @@ public class Mandelbrot implements IFractal{
     @Override
     public int[][] getPixelsColor()
     {
-        Complex z;
         double X0 = -2, X1 = 2, Y0 = -2, Y1 = 2;
-        int n;
 
+        Complex z;
         for (int ys = 0; ys < height; ys++)
             for (int xs = 0; xs < width; xs++)
             {
                 z = new Complex(xs * (X1 - X0) / width + X0, ys * (Y1 - Y0) / height + Y0);
-                n = fMandelbrot(z);
+                int n = fMandelbrot(z);
                 frame[ys][xs] = new Color(n % 255, n*n % 255, 0 % 255).getRGB();
             }
         return frame;
@@ -37,8 +36,8 @@ public class Mandelbrot implements IFractal{
     private int fMandelbrot(Complex c)
     {
         Complex z = new Complex(0, 0);
-        int n = 0;
 
+        int n = 0;
         while (n < 255 && Complex.mod(z) < 2)
         {
             z = Complex.sum(c, Complex.mul(z, z));
