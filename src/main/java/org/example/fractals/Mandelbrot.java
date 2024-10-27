@@ -37,14 +37,15 @@ public class Mandelbrot implements IFractal {
     {
         Complex z = new Complex(0, 0);
 
-        int n = 0;
-        while (n < 255 && z.mod() < 2)
+        for (int n = 0; n < 255; n++)
         {
             z = c.sum(z.mul(z));
-            n++;
+            if (z.mod() >= 2) {
+                return n;
+            }
         }
 
-        return n;
+        return 0;
     }
 
 }

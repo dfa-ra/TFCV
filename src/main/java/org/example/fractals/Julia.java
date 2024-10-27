@@ -24,8 +24,8 @@ public class Julia implements IFractal{
         for (int ys = 0; ys < height; ys++) {
             for (int xs = 0; xs < width; xs++) {
                 z = new Complex(xs * (X1 - X0) / width + X0, ys * (Y1 - Y0) / height + Y0);
-                int n = fJulia(z, new Complex(-0.7, 0.7));
-                frame[xs][ys] = new Color(n % 255, n * n % 255, 0 % 255).getRGB();
+                int n = fJulia(z, new Complex(-0.5251993, 0.5251993));
+                frame[xs][ys] = new Color(n % 255, n % 255, 0 % 255).getRGB();
             }
         }
         return frame;
@@ -33,14 +33,14 @@ public class Julia implements IFractal{
 
     private int fJulia (Complex z, Complex c)
     {
-        int n = 0;
-        while (n < 255 && z.mod() < 2)
-        {
+        for (int n = 0; n < 255; ++n) {
             z = c.sum(z.mul(z));
-            n++;
+            if (z.mod() >= 2) {
+                return n;
+            }
         }
 
-        return n;
+        return 0;
     }
 
 }
