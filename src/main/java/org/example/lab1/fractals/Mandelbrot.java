@@ -1,4 +1,4 @@
-package org.example.fractals;
+package org.example.lab1.fractals;
 
 import org.example.complex.Complex;
 
@@ -15,6 +15,11 @@ public class Mandelbrot implements IFractal {
         frame = new int[w][h];
         width = w;
         height = h;
+    }
+
+    @Override
+    public int[][] getPixelsColor(Complex c) {
+        return getPixelsColor();
     }
 
     @Override

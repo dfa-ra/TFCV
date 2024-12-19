@@ -1,4 +1,4 @@
-package org.example.fractals;
+package org.example.lab1.fractals;
 
 public enum Fractal {
     MANDELBROT,

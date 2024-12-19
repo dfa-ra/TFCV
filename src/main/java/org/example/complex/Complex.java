@@ -13,6 +13,10 @@ public class Complex {
         return new Complex(this.x + b.x, this.y + b.y);
     }
 
+    public Complex sub(Complex b) {
+        return sum(b.neg());
+    }
+
     public Complex mul(Complex b) {
         return new Complex(this.x * b.x - this.y * b.y, this.x * b.y + this.y * b.x);
     }

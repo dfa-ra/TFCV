@@ -1,6 +1,7 @@
-package org.example;
+package org.example.lab1;
 
-import org.example.fractals.*;
+import org.example.complex.Complex;
+import org.example.lab1.fractals.*;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -23,6 +24,10 @@ public class FractalDrawer extends ImageIcon{
 
     public void draw(Fractal name) {
         putPixels(fractals.get(name).getPixelsColor());
+    }
+
+    public void drawMove(Fractal name, double x, double y){
+        putPixels(fractals.get(name).getPixelsColor(new Complex(x, y)));
     }
 
     private void putPixels ( int[][] frame)

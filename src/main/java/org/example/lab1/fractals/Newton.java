@@ -1,4 +1,4 @@
-package org.example.fractals;
+package org.example.lab1.fractals;
 
 import org.example.complex.Complex;
 
@@ -35,6 +35,10 @@ public class Newton implements IFractal{
     }
 
     @Override
+    public int[][] getPixelsColor(Complex c) {
+        return getPixelsColor();
+    }
+
     public int[][] getPixelsColor()
     {
         double X0 = -scale, X1 = scale, Y0 = -scale, Y1 = scale;
