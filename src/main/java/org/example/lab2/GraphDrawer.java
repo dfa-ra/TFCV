@@ -75,7 +75,7 @@ public class GraphDrawer extends ImageIcon {
             Complex start = (z.sum(inverse)).mul(-0.5 * 1);
             return start.root(1 / (2 - (k * 0.5 + 0.5)));
         }
-        else if (2 < k && k < 3.001) {
+        else if (2 < k) {
             Complex inverse = Complex.valueOf(1).div(z);
             Complex s = (z.sum(inverse)).mul(-0.5 * 1);
             Complex st = s.root(1 / (2 - (2 * 0.5 + 0.5)));
