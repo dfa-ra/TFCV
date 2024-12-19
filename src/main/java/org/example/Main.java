@@ -1,11 +1,15 @@
 package org.example;
 
 import org.example.lab1.FractalDrawer;
+import org.example.lab1.FractalFrame;
 import org.example.lab1.fractals.Fractal;
+import org.example.lab2.GraphFrame;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 public class Main extends JPanel {
@@ -13,64 +17,45 @@ public class Main extends JPanel {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 500;
 
-    private static Fractal typeFractal = Fractal.NEWTON;
 
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Graphics Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel label = new JLabel();
-        FractalDrawer fractalDrawer = new FractalDrawer(WIDTH, HEIGHT);
-        label.setIcon(fractalDrawer);
-        fractalDrawer.draw(typeFractal);
-        frame.addKeyListener(new KeyAdapter() {
-            private double count_x = -0.5;
-            private double count_y = 0.5;
+        SwingUtilities.invokeLater(Main::createAndShowGUI);
+    }
 
-            public void keyPressed(KeyEvent e) {
-                System.out.println("Key pressed: " + e.getKeyChar() + "/" + e.getKeyCode());
-                //esc
-                if (e.getKeyCode() == 27)  {
+    private static void createAndShowGUI() {
+        JFrame mainFrame = new JFrame("Main Window");
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setSize(400, 200);
+        mainFrame.setLayout(new FlowLayout());
 
-                }
-                // arrow right
-                if (e.getKeyCode() == 37)  {
-                    count_x += 0.01;
-                }
-                // arrow left
-                if (e.getKeyCode() == 39)  {
-                    count_x -= 0.01;
-                }
-                // arrow up
-                if (e.getKeyCode() == 38)  {
-                    count_y += 0.01;
-                }
-                // arrow down
-                if (e.getKeyCode() == 40) {
-                    count_y -= 0.01;
-                }
+        JButton openLab1 = new JButton("Open lab 1");
+        JButton openLab2 = new JButton("Open lab 2");
 
-                if(e.getKeyCode() == 49){
-                    typeFractal = Fractal.NEWTON;
-                }
+        mainFrame.add(openLab1);
+        mainFrame.add(openLab2);
 
-                if(e.getKeyCode() == 50){
-                    typeFractal = Fractal.JULIA;
-                }
+        openLab1.addActionListener(e -> openNewWindow(mainFrame, new FractalFrame(mainFrame)));
+        openLab2.addActionListener(e -> openNewWindow(mainFrame, new GraphFrame(mainFrame)));
 
-                if(e.getKeyCode() == 51){
-                    typeFractal = Fractal.MANDELBROT;
-                }
+        mainFrame.setLocationRelativeTo(null); // Center the window
+        mainFrame.setVisible(true);
+    }
 
-                fractalDrawer.drawMove(typeFractal, count_x % 2.0, count_y % 2.0);
-                label.repaint();
+    private static void openNewWindow(JFrame parent, JFrame newFrame) {
+        newFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                parent.setVisible(true);
             }
         });
 
-        frame.getContentPane().add(label, BorderLayout.CENTER);
-        frame.setLocationRelativeTo(null);
+        newFrame.setLocationRelativeTo(parent); // Center relative to parent
+        parent.setVisible(false);
+        newFrame.setVisible(true);
 
-        frame.setSize(WIDTH, HEIGHT);
-        frame.setVisible(true);
+        // Request focus for KeyListener to work
+        newFrame.requestFocus();
     }
+
 }
