@@ -18,7 +18,6 @@ public class Main extends JPanel {
     private static final int HEIGHT = 500;
 
 
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Main::createAndShowGUI);
     }
@@ -26,7 +25,7 @@ public class Main extends JPanel {
     private static void createAndShowGUI() {
         JFrame mainFrame = new JFrame("Main Window");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setSize(400, 200);
+        mainFrame.setSize(WIDTH, HEIGHT);
         mainFrame.setLayout(new FlowLayout());
 
         JButton openLab1 = new JButton("Open lab 1");
@@ -38,7 +37,7 @@ public class Main extends JPanel {
         openLab1.addActionListener(e -> openNewWindow(mainFrame, new FractalFrame(mainFrame)));
         openLab2.addActionListener(e -> openNewWindow(mainFrame, new GraphFrame(mainFrame)));
 
-        mainFrame.setLocationRelativeTo(null); // Center the window
+        mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
     }
 
@@ -50,11 +49,10 @@ public class Main extends JPanel {
             }
         });
 
-        newFrame.setLocationRelativeTo(parent); // Center relative to parent
+        newFrame.setLocationRelativeTo(parent);
         parent.setVisible(false);
         newFrame.setVisible(true);
 
-        // Request focus for KeyListener to work
         newFrame.requestFocus();
     }
 

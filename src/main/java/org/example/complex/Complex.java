@@ -48,9 +48,6 @@ public class Complex {
         return new Complex(realPart, imagPart);
     }
 
-
-
-
     public Complex div(Complex b) {
         double n = b.x * b.x + b.y * b.y;
         Complex mulled = this.mul(b.conjugate());

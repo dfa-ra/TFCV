@@ -35,6 +35,7 @@ public class GraphFrame extends JFrame {
 
                 if (k > 3) k = 3;
                 if (k < 0) k = 0;
+
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     dispose();
                     parent.setVisible(true);
